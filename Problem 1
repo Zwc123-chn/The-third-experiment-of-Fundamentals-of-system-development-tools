@@ -379,4 +379,83 @@ removing build/bdist.linux-x86_64/wheel
 Successfully built greetlab_25030021128-0.1.0.tar.gz and greetlab_25030021128-0.1.0-py3-none-any.whl
 zwc@ZwcLinux:~/q09$ ls dist
 greetlab_25030021128-0.1.0-py3-none-any.whl  greetlab_25030021128-0.1.0.tar.gz
+zwc@ZwcLinux:~/q09$ cd ~
+zwc@ZwcLinux:~$ source test_env/bin/activate
+(test_env) zwc@ZwcLinux:~$ pip install ./q09/dist/greetlab-25030021128-0.1.0-py3-none-any.whl
+WARNING: Requirement './q09/dist/greetlab-25030021128-0.1.0-py3-none-any.whl' looks like a filename, but the file does not exist
+Processing ./q09/dist/greetlab-25030021128-0.1.0-py3-none-any.whl
+ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory: '/home/zwc/q09/dist/greetlab-25030021128-0.1.0-py3-none-any.whl'
+
+(test_env) zwc@ZwcLinux:~$ ls -la
+total 328
+drwxr-x--- 33 zwc  zwc   4096  9月  7 14:24 .
+drwxr-xr-x  4 root root  4096  8月 25 14:28 ..
+-rw-rw-r--  1 zwc  zwc      0  9月  5 10:58 bash_files.txt
+-rw-------  1 zwc  zwc  13735  9月  6 23:10 .bash_history
+-rw-r--r--  1 zwc  zwc    220  8月 24 16:59 .bash_logout
+-rw-r--r--  1 zwc  zwc   3771  8月 24 16:59 .bashrc
+drwx------ 17 zwc  zwc   4096  9月  2 15:37 .cache
+-rw-rw-r--  1 zwc  zwc     11  8月 31 16:10 cleanup.log
+drwx------ 21 zwc  zwc   4096  9月  3 12:39 .config
+drwx------  3 zwc  zwc   4096  9月  2 15:37 .copilot
+drwxr-xr-x  2 zwc  zwc   4096  8月 26 21:30 Desktop
+drwxr-xr-x  2 zwc  zwc   4096  8月 24 20:25 Documents
+drwxrwxr-x  3 zwc  zwc   4096  9月  2 15:39 .dotnet
+drwxr-xr-x  2 zwc  zwc   4096  8月 24 20:25 Downloads
+-rw-rw-r--  1 zwc  zwc   1475  9月  5 10:55 file_list.txt
+-rw-rw-r--  1 zwc  zwc     85  8月 30 21:24 .gitconfig
+drwx------  2 zwc  zwc   4096  8月 26 21:44 .gnupg
+-rw-------  1 zwc  zwc     20  8月 30 21:25 .lesshst
+drwx------  5 zwc  zwc   4096  9月  7 14:17 .local
+-rw-rw-r--  1 zwc  zwc     91  8月 30 14:56 marco.sh
+drwxr-xr-x  2 zwc  zwc   4096  8月 24 20:25 Music
+-rw-rw-r--  1 zwc  zwc    640  9月  2 15:34 packages.microsoft.gpg
+-rw-r--r--  1 zwc  zwc    310  8月 25 15:13 .pam_environment
+drwxr-xr-x  3 zwc  zwc   4096  8月 25 13:54 Pictures
+-rw-r--r--  1 zwc  zwc    807  8月 24 16:59 .profile
+drwxr-xr-x  2 zwc  zwc   4096  8月 24 20:25 Public
+drwxrwxr-x  3 zwc  zwc   4096  8月 30 20:59 q00
+drwxrwxr-x  3 zwc  zwc   4096  8月 30 21:04 q00-fresh
+drwxrwxr-x  4 zwc  zwc   4096  8月 26 12:43 q01
+drwxrwxr-x  2 zwc  zwc   4096  8月 29 10:27 q02
+drwxrwxr-x  3 zwc  zwc   4096  8月 29 14:24 q03
+drwxrwxr-x  2 zwc  zwc   4096  8月 29 17:38 q04
+drwxrwxr-x  2 zwc  zwc   4096  9月  2 11:00 q05
+drwxrwxr-x  5 zwc  zwc   4096  9月  3 13:03 q06
+drwxrwxr-x  4 zwc  zwc   4096  9月  3 16:41 q07
+drwxrwxr-x  2 zwc  zwc   4096  9月  4 20:35 q08
+drwxrwxr-x  4 zwc  zwc   4096  9月  7 14:30 q09
+-rw-rw-r--  1 zwc  zwc    302  8月 29 17:38 report.aux
+-rw-rw-r--  1 zwc  zwc   4377  8月 29 17:38 report.fdb_latexmk
+-rw-rw-r--  1 zwc  zwc   7820  8月 29 17:38 report.fls
+-rw-rw-r--  1 zwc  zwc   4912  8月 29 17:38 report.log
+-rw-rw-r--  1 zwc  zwc  75318  8月 29 17:38 report.pdf
+drwxrwxr-x  5 zwc  zwc   4096  9月  2 15:11 sdt-env
+drwx------  5 zwc  zwc   4096  8月 29 17:44 snap
+drwx------  2 zwc  zwc   4096  8月 24 22:23 .ssh
+-rw-r--r--  1 zwc  zwc      0  8月 24 19:40 .sudo_as_admin_successful
+drwxr-xr-x  2 zwc  zwc   4096  8月 24 20:25 Templates
+drwxrwxr-x  5 zwc  zwc   4096  9月  7 14:24 test_env
+-rw-rw-r--  1 zwc  zwc     60  9月  5 14:00 test_vim.txt
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-clipboard-tty2-control.pid
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-clipboard-tty2-service.pid
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-draganddrop-tty2-control.pid
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-hostversion-tty2-control.pid
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-seamless-tty2-control.pid
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-vmsvga-session-tty2-control.pid
+-rw-r-----  1 zwc  zwc      5  9月  7 14:09 .vboxclient-vmsvga-session-tty2-service.pid
+drwxr-xr-x  2 zwc  zwc   4096  8月 24 20:25 Videos
+drwxrwxr-x  4 zwc  zwc   4096  9月  2 15:37 .vscode
+drwxrwxr-x  3 zwc  zwc   4096  9月  2 15:37 .vscode-shared
+-rw-rw-r--  1 zwc  zwc    177  9月  2 15:34 .wget-hsts
+(test_env) zwc@ZwcLinux:~$ cd ~
+(test_env) zwc@ZwcLinux:~$ rm -rf test_env
+(test_env) zwc@ZwcLinux:~$ python3 -m venv test_env
+(test_env) zwc@ZwcLinux:~$ . ./test_env/bin/activate
+(test_env) zwc@ZwcLinux:~$ pip install ./q09/dist/*.whl
+Processing ./q09/dist/greetlab_25030021128-0.1.0-py3-none-any.whl
+Installing collected packages: greetlab-25030021128
+Successfully installed greetlab-25030021128-0.1.0
+(test_env) zwc@ZwcLinux:~$ sdt-greet --name 25030021128
+Hello, 25030021128!
 
