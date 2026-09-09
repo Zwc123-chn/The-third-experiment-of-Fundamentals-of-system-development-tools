@@ -1,10 +1,80 @@
-cat >> test_greet.py <<'EOF'
+zwc@ZwcLinux:~$ cp -r ~/q09 ~/q10
+zwc@ZwcLinux:~$ cd ~/q10
+zwc@ZwcLinux:~/q10$ cat >> test_greet.py <<'EOF'
 
 def test_greet_blank_name():
     import subprocess
     result = subprocess.run(
-        ["python", "-m", "greetlab.main", "   "],
+        ["python3", "-m", "greetlab.main", "   "],
         capture_output=True
     )
     assert result.returncode == 2
 EOF
+zwc@ZwcLinux:~/q10$ python3 -m pytest test_greet.py
+======================================================================================== test session starts ========================================================================================
+platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
+rootdir: /home/zwc/q10
+plugins: anyio-4.12.1
+collected 1 item                                                                                                                                                                                    
+
+test_greet.py F                                                                                                                                                                               [100%]
+
+============================================================================================= FAILURES ==============================================================================================
+_______________________________________________________________________________________ test_greet_blank_name _______________________________________________________________________________________
+
+    def test_greet_blank_name():
+        import subprocess
+        result = subprocess.run(
+            ["python3", "-m", "greetlab.main", "   "],
+            capture_output=True
+        )
+>       assert result.returncode == 2
+E       assert 1 == 2
+E        +  where 1 = CompletedProcess(args=['python3', '-m', 'greetlab.main', '   '], returncode=1, stdout=b'', stderr=b"/usr/bin/python3: Error while finding module specification for 'greetlab.main' (ModuleNotFoundError: No module named 'greetlab')\n").returncode
+
+test_greet.py:8: AssertionError
+====================================================================================== short test summary info ======================================================================================
+FAILED test_greet.py::test_greet_blank_name - assert 1 == 2
+========================================================================================= 1 failed in 0.14s =========================================================================================
+zwc@ZwcLinux:~/q10$ cp -r dist/greetlab ./
+ls
+cp: cannot stat 'dist/greetlab': No such file or directory
+dist  __pycache__  pyproject.toml  src  test_greet.py
+zwc@ZwcLinux:~/q10$ ls
+dist  __pycache__  pyproject.toml  src  test_greet.py
+zwc@ZwcLinux:~/q10$ unzip dist/greetlab_25030021128-0.1.0-py3-none-any.whl -d ./
+Archive:  dist/greetlab_25030021128-0.1.0-py3-none-any.whl
+  inflating: ./greetlab/__init__.py  
+  inflating: ./greetlab/cli.py       
+  inflating: ./greetlab_25030021128-0.1.0.dist-info/METADATA  
+  inflating: ./greetlab_25030021128-0.1.0.dist-info/WHEEL  
+  inflating: ./greetlab_25030021128-0.1.0.dist-info/entry_points.txt  
+  inflating: ./greetlab_25030021128-0.1.0.dist-info/top_level.txt  
+  inflating: ./greetlab_25030021128-0.1.0.dist-info/RECORD  
+zwc@ZwcLinux:~/q10$ PYTHONPATH=. python3 -m pytest test_greet.py
+======================================================================================== test session starts ========================================================================================
+platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
+rootdir: /home/zwc/q10
+plugins: anyio-4.12.1
+collected 1 item                                                                                                                                                                                    
+
+test_greet.py F                                                                                                                                                                               [100%]
+
+============================================================================================= FAILURES ==============================================================================================
+_______________________________________________________________________________________ test_greet_blank_name _______________________________________________________________________________________
+
+    def test_greet_blank_name():
+        import subprocess
+        result = subprocess.run(
+            ["python3", "-m", "greetlab.main", "   "],
+            capture_output=True
+        )
+>       assert result.returncode == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = CompletedProcess(args=['python3', '-m', 'greetlab.main', '   '], returncode=1, stdout=b'', stderr=b'/usr/bin/python3: No module named greetlab.main\n').returncode
+
+test_greet.py:8: AssertionError
+====================================================================================== short test summary info ======================================================================================
+FAILED test_greet.py::test_greet_blank_name - AssertionError: assert 1 == 2
+========================================================================================= 1 failed in 0.09s =========================================================================================
+zwc@ZwcLinux:~/q10$ 
