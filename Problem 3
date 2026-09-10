@@ -1,0 +1,1 @@
+Issue:Windows 上运行不了,尽快修复。  提交信息:fix bug 评审意见:这里写得不好,重写。 已知事实:运行 sdt-greet --name " " 时仍输出 Hello, !,并以 0 退出。
