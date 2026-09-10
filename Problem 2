@@ -441,5 +441,21 @@ if not name:
 
 `git diff` 输出为空，因为 `greetlab/main.py` 已处于正确状态，无未提交改动。
 
-zwc@ZwcLinux:~$ 
+zwc@ZwcLinux:~$ cd ~/q10
+zwc@ZwcLinux:~/q10$ git diff
+zwc@ZwcLinux:~/q10$ python3 -m pytest test_greet.py
+====================================================================== test session starts ======================================================================
+platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
+rootdir: /home/zwc/q10
+plugins: anyio-4.12.1
+collected 1 item                                                                                                                                                
+
+test_greet.py .                                                                                                                                           [100%]
+
+======================================================================= 1 passed in 0.04s =======================================================================
+zwc@ZwcLinux:~/q10$ python3 -m greetlab.main "   "
+zwc@ZwcLinux:~/q10$ echo $?
+2
+zwc@ZwcLinux:~/q10$ 
+
 
