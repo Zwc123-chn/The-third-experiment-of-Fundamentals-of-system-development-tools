@@ -456,6 +456,17 @@ test_greet.py .                                                                 
 zwc@ZwcLinux:~/q10$ python3 -m greetlab.main "   "
 zwc@ZwcLinux:~/q10$ echo $?
 2
-zwc@ZwcLinux:~/q10$ 
+zwc@ZwcLinux:~/q10$ cat > ai_shturl <<'EOF'
+核心提示：name去空白为空时main抛出SystemExit(2)，禁止修改测试，仅输出diff。
+智能体改动：修改greetlab/main.py，增加参数读取与空白字符串校验。
+人工检查diff：无无关改动，test_greet.py保持原样。
+人工验证：pytest 1 passed，空白输入返回码等于2。
+EOF
+zwc@ZwcLinux:~/q10$ git add ai_shturl
+git commit -m "doc: ai_shturl for q10 tdd repair"
+[main b5ede30] doc: ai_shturl for q10 tdd repair
+ 1 file changed, 4 insertions(+)
+ create mode 100644 ai_shturl
+
 
 
