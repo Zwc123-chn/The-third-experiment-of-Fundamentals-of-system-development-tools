@@ -10,3 +10,126 @@ cd ex1 && source venv/bin/activate
 pip install requests
 deactivate
 python -c "import requests"
+
+#练习三----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zwc@ZwcLinux:~$ mkdir -p ex3 && cd ex3
+zwc@ZwcLinux:~/ex3$ cat > pyproject.toml << 'EOF'
+[project]
+name = "greeting"
+version = "0.1.0"
+description = "A simple greeting library"
+dependencies = ["typer>=0.9"]
+
+[project.scripts]
+greet = "greeting:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+EOF
+cat > greeting.py << 'EOF'
+import typer
+
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+
+def main(name: str):
+    print(greet(name))
+
+if __name__ == "__main__":
+    typer.run(main)
+EOF
+zwc@ZwcLinux:~/ex3$ uv build
+Command 'uv' not found, but can be installed with:
+sudo snap install astral-uv
+zwc@ZwcLinux:~/ex3$ sudo snap install astral-uv
+[sudo] password for zwc: 
+error: This revision of snap "astral-uv" was published using classic confinement and thus may
+       perform arbitrary system changes outside of the security sandbox that snaps are usually
+       confined to, which may put your system at risk.
+
+       If you understand and want to proceed repeat the command including --classic.
+zwc@ZwcLinux:~/ex3$ sudo snap install astral-uv --classic
+astral-uv 0.12.6 from Alex Lowe (lengau) installed
+zwc@ZwcLinux:~/ex3$ uv build
+Building source distribution...
+running egg_info
+creating greeting.egg-info
+writing greeting.egg-info/PKG-INFO
+writing dependency_links to greeting.egg-info/dependency_links.txt
+writing entry points to greeting.egg-info/entry_points.txt
+writing requirements to greeting.egg-info/requires.txt
+writing top-level names to greeting.egg-info/top_level.txt
+writing manifest file 'greeting.egg-info/SOURCES.txt'
+reading manifest file 'greeting.egg-info/SOURCES.txt'
+writing manifest file 'greeting.egg-info/SOURCES.txt'
+running sdist
+running egg_info
+writing greeting.egg-info/PKG-INFO
+writing dependency_links to greeting.egg-info/dependency_links.txt
+writing entry points to greeting.egg-info/entry_points.txt
+writing requirements to greeting.egg-info/requires.txt
+writing top-level names to greeting.egg-info/top_level.txt
+reading manifest file 'greeting.egg-info/SOURCES.txt'
+writing manifest file 'greeting.egg-info/SOURCES.txt'
+warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+
+running check
+creating greeting-0.1.0
+creating greeting-0.1.0/greeting.egg-info
+copying files to greeting-0.1.0...
+copying greeting.py -> greeting-0.1.0
+copying pyproject.toml -> greeting-0.1.0
+copying greeting.egg-info/PKG-INFO -> greeting-0.1.0/greeting.egg-info
+copying greeting.egg-info/SOURCES.txt -> greeting-0.1.0/greeting.egg-info
+copying greeting.egg-info/dependency_links.txt -> greeting-0.1.0/greeting.egg-info
+copying greeting.egg-info/entry_points.txt -> greeting-0.1.0/greeting.egg-info
+copying greeting.egg-info/requires.txt -> greeting-0.1.0/greeting.egg-info
+copying greeting.egg-info/top_level.txt -> greeting-0.1.0/greeting.egg-info
+Writing greeting-0.1.0/setup.cfg
+Creating tar archive
+removing 'greeting-0.1.0' (and everything under it)
+Building wheel from source distribution...
+running egg_info
+writing greeting.egg-info/PKG-INFO
+writing dependency_links to greeting.egg-info/dependency_links.txt
+writing entry points to greeting.egg-info/entry_points.txt
+writing requirements to greeting.egg-info/requires.txt
+writing top-level names to greeting.egg-info/top_level.txt
+reading manifest file 'greeting.egg-info/SOURCES.txt'
+writing manifest file 'greeting.egg-info/SOURCES.txt'
+running bdist_wheel
+running build
+running build_py
+creating build/lib
+copying greeting.py -> build/lib
+running egg_info
+writing greeting.egg-info/PKG-INFO
+writing dependency_links to greeting.egg-info/dependency_links.txt
+writing entry points to greeting.egg-info/entry_points.txt
+writing requirements to greeting.egg-info/requires.txt
+writing top-level names to greeting.egg-info/top_level.txt
+reading manifest file 'greeting.egg-info/SOURCES.txt'
+writing manifest file 'greeting.egg-info/SOURCES.txt'
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+copying build/lib/greeting.py -> build/bdist.linux-x86_64/wheel/.
+running install_egg_info
+Copying greeting.egg-info to build/bdist.linux-x86_64/wheel/./greeting-0.1.0-py3.10.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/greeting-0.1.0.dist-info/WHEEL
+creating '/home/zwc/ex3/dist/.tmp-bt1n_e9v/greeting-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'greeting.py'
+adding 'greeting-0.1.0.dist-info/METADATA'
+adding 'greeting-0.1.0.dist-info/WHEEL'
+adding 'greeting-0.1.0.dist-info/entry_points.txt'
+adding 'greeting-0.1.0.dist-info/top_level.txt'
+adding 'greeting-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built dist/greeting-0.1.0.tar.gz
+Successfully built dist/greeting-0.1.0-py3-none-any.whl
+zwc@ZwcLinux:~/ex3$ ls dist/
+greeting-0.1.0-py3-none-any.whl  greeting-0.1.0.tar.gz
