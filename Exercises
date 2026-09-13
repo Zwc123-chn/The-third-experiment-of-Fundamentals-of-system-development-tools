@@ -249,3 +249,64 @@ Try: sudo apt install <deb name>
 zwc@ZwcLinux:~/ex3$ python3 -m pytest -q
 ..                                                                                                                                                        [100%]
 2 passed in 0.02s
+
+#练习八----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zwc@ZwcLinux:~$ mkdir -p ex8 && cd ex8
+zwc@ZwcLinux:~/ex8$ git init
+Initialized empty Git repository in /home/zwc/ex8/.git/
+zwc@ZwcLinux:~/ex8$ printf 'print("hello")\n' > hello.py
+zwc@ZwcLinux:~/ex8$ git add hello.py && git commit -m "add hello"
+[main (root-commit) f93d673] add hello
+ Committer: zwc <zwc@ZwcLinux.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.py
+zwc@ZwcLinux:~/ex8$ sed -i 's/hello/hi/' hello.py
+zwc@ZwcLinux:~/ex8$ git add hello.py && git commit -m "fix"
+[main 7a89c30] fix
+ Committer: zwc <zwc@ZwcLinux.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+zwc@ZwcLinux:~/ex8$ git log --oneline
+7a89c30 (HEAD -> main) fix
+f93d673 add hello
+zwc@ZwcLinux:~/ex8$ git commit --amend -m "把问候语从 hello 改成 hi，因为新版需求要求更口语化的表达"
+[main 90b70e0] 把问候语从 hello 改成 hi，因为新版需求要求更口语化的表达
+ Date: Sun Sep 13 14:16:49 2026 +0800
+ Committer: zwc <zwc@ZwcLinux.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+zwc@ZwcLinux:~/ex8$ git log --oneline
+90b70e0 (HEAD -> main) 把问候语从 hello 改成 hi，因为新版需求要求更口语化的表达
+f93d673 add hello
