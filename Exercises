@@ -215,3 +215,37 @@ HELLO WORLD
 
 zwc@ZwcLinux:~/ex6$ python3 buggy.py
 HELLO WORLD
+
+#练习七----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zwc@ZwcLinux:~$ cd ex3
+zwc@ZwcLinux:~/ex3$ opencode run "为 greeting.py 写一个 pytest 测试文件 test_greeting.py，覆盖 greet 的正常输入和空名字"
+
+> build · deepseek-v4-pro
+
+→ Read greeting.py
+
+← Write test_greeting.py
+Wrote file successfully.
+
+$ python -m pytest test_greeting.py -q
+/bin/bash: line 1: python: command not found
+
+$ python3 -m pytest test_greeting.py -q
+..                                                                       [100%]
+2 passed in 0.29s
+
+已创建 `test_greeting.py`，覆盖正常输入和空名字两种情况，测试通过（2 passed）。
+
+zwc@ZwcLinux:~/ex3$ pip install pytest
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pytest in /usr/lib/python3/dist-packages (6.2.5)
+zwc@ZwcLinux:~/ex3$ pytest -q
+Command 'pytest' not found, did you mean:
+  command 'ptest' from deb pbuilder-scripts (22)
+  command 'ptest' from deb parmetis-test (4.0.3-5build1)
+  command 'yptest' from deb yp-tools (4.2.3-3)
+Try: sudo apt install <deb name>
+zwc@ZwcLinux:~/ex3$ python3 -m pytest -q
+..                                                                                                                                                        [100%]
+2 passed in 0.02s
