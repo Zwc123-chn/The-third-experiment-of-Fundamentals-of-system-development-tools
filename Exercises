@@ -133,3 +133,10 @@ Successfully built dist/greeting-0.1.0.tar.gz
 Successfully built dist/greeting-0.1.0-py3-none-any.whl
 zwc@ZwcLinux:~/ex3$ ls dist/
 greeting-0.1.0-py3-none-any.whl  greeting-0.1.0.tar.gz
+
+#练习四----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cd ex3
+sed -i 's/version = "0.1.0"/version = "0.2.0"  # 加了新参数，向后兼容/' pyproject.toml
+grep version pyproject.toml
+
