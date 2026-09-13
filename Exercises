@@ -140,3 +140,27 @@ cd ex3
 sed -i 's/version = "0.1.0"/version = "0.2.0"  # 加了新参数，向后兼容/' pyproject.toml
 grep version pyproject.toml
 
+#练习五----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zwc@ZwcLinux:~$ mkdir -p ex5 && cd ex5
+zwc@ZwcLinux:~/ex5$ opencode "写一个 Python 脚本 links.py：下载 https://example.com，打印出里面所有链接"
+Error: Failed to change directory to /home/zwc/ex5/写一个 Python 脚本 links.py：下载 https:/example.com，打印出里面所有链接
+zwc@ZwcLinux:~/ex5$ opencode run "写一个 Python 脚本 links.py：下载 https://example.com，打印出里面所有链接"
+
+> build · deepseek-v4-pro
+
+← Write links.py
+Wrote file successfully.
+
+$ python3 links.py
+https://iana.org/domains/example
+
+完成。`links.py` 用标准库下载并解析页面，输出其中的链接。
+
+zwc@ZwcLinux:~/ex5$ python links.py
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+zwc@ZwcLinux:~/ex5$ python3 links.py
+https://iana.org/domains/example
+
