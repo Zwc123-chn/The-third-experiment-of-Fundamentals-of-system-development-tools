@@ -335,3 +335,61 @@ Changes to be committed:
 	new file:   .gitignore
 	new file:   app.py
 
+#练习十----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zwc@ZwcLinux:~$ cd ex3
+zwc@ZwcLinux:~/ex3$ opencode run "用代码评审的口吻审查 greeting.py，列出所有问题，并标明哪些必须改、哪些只是建议"
+
+> build · deepseek-v4-pro
+
+→ Read greeting.py
+
+$ python -c "import typer; print(typer.__version__)" 2>&1; ls
+/bin/bash: line 1: python: command not found
+dist
+greeting.egg-info
+greeting.py
+__pycache__
+pyproject.toml
+test_greeting.py
+
+→ Read pyproject.toml
+→ Read test_greeting.py
+
+$ python3 -c "import typer; print(typer.__version__)" 2>&1
+0.23.0
+
+$ python3 -c "import sys; sys.argv=['greeting.py','Alice']; import greeting; greeting.main('Alice')" 2>&1; echo "---direct entry point simulation---"; python3 -c "import sys; sys.argv=['greet','Alice']; from greeting import main; main()" 2>&1
+Hello, Alice!
+---direct entry point simulation---
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: main() missing 1 required positional argument: 'name'
+
+## 代码评审：`greeting.py`
+
+### 必须改（会导致功能失效）
+
+1. **入口点 `greet = "greeting:main"` 与 `typer.run(main)` 不匹配（会直接崩溃）** — `greeting.py:6-10`
+   `[project.scripts]` 里的 `greet` 命令会直接调用 `main()`，绕过了 `if __name__ == "__main__"` 里的 `typer.run`。已复现：`main()` → `TypeError: missing 1 required positional argument: 'name'`。
+   应改用显式 `app = typer.Typer()` + `@app.command()`，让 `main` 内部调用 `app()`（或让入口点指向一个 `typer.run` 的包装函数）。
+
+### 建议改（不影响功能，但应改进）
+
+2. **`main` 缺少返回类型注解** — `greeting.py:6`
+   建议补上 `-> None`，与 `greet` 的 `-> str` 保持风格一致，也便于类型检查。
+
+3. **缺少 docstring** — `greeting.py:3,6`
+   两个函数都没有文档字符串，建议补充用途与参数说明。
+
+4. **`name` 参数未声明 Typer 类型** — `greeting.py:6`
+   目前是隐式的必填位置参数。建议用 `name: str = typer.Argument(...)` 明确语义（如 help 文案、是否可选）。
+
+5. **`main` 中的 `print` 硬编码输出** — `greeting.py:7`
+   目前仅支持 stdout，如需复用/测试返回值，建议 `main` 返回字符串、由调用方决定输出；不过作为简单 CLI 可接受，属可选项。
+
+6. **空名字处理** — `greeting.py:4`（配合 `test_greeting.py:10`）
+   `greet("")` 返回 `"Hello, !"`。测试期望如此，但若产品上不允许空名，建议加校验。属可选项。
+
+**结论**：第 1 条是致命问题，当前 `greet` 命令安装后无法使用，必须先修；其余为风格/健壮性建议。
+
