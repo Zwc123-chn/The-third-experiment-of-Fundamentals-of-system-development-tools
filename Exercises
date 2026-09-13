@@ -310,3 +310,28 @@ After doing this, you may fix the identity used for this commit with:
 zwc@ZwcLinux:~/ex8$ git log --oneline
 90b70e0 (HEAD -> main) 把问候语从 hello 改成 hi，因为新版需求要求更口语化的表达
 f93d673 add hello
+
+#练习九----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zwc@ZwcLinux:~$ mkdir -p ex9 && cd ex9
+zwc@ZwcLinux:~/ex9$ cat > app.py << 'EOF'
+import os
+print("API_KEY:", os.environ.get("API_KEY", "未设置"))
+EOF
+zwc@ZwcLinux:~/ex9$ python3 app.py
+API_KEY: 未设置
+zwc@ZwcLinux:~/ex9$ API_KEY=abc123 python3 app.py
+API_KEY: abc123
+zwc@ZwcLinux:~/ex9$ echo "API_KEY=abc123" > .env
+zwc@ZwcLinux:~/ex9$ printf '.env\n' > .gitignore
+zwc@ZwcLinux:~/ex9$ git init && git add . && git status
+Initialized empty Git repository in /home/zwc/ex9/.git/
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   .gitignore
+	new file:   app.py
+
